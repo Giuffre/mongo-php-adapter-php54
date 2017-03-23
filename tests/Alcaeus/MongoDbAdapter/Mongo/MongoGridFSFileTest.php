@@ -10,7 +10,7 @@ class MongoGridFSFileTest extends TestCase
     {
         $this->prepareFile('abcd', ['filename' => 'foo']);
         $file = $this->getGridFS()->findOne(['filename' => 'foo']);
-        $this->assertInstanceOf(\MongoGridFSFile::class, $file);
+        $this->assertInstanceOf('\MongoGridFSFile', $file);
 
         $this->assertInternalType('string', serialize($file));
     }
@@ -47,7 +47,7 @@ class MongoGridFSFileTest extends TestCase
         $id = $this->prepareFile('abcd', ['filename' => $filename]);
         @unlink($filename);
         $file = $this->getGridFS()->findOne(['_id' => $id]);
-        $this->assertInstanceOf(\MongoGridFSFile::class, $file);
+        $this->assertInstanceOf('\MongoGridFSFile', $file);
 
         $file->write();
 
@@ -62,7 +62,7 @@ class MongoGridFSFileTest extends TestCase
         $filename = '/tmp/test-mongo-grid-fs-file';
         @unlink($filename);
         $file = $this->getGridFS()->findOne(['_id' => $id]);
-        $this->assertInstanceOf(\MongoGridFSFile::class, $file);
+        $this->assertInstanceOf('\MongoGridFSFile', $file);
 
         $file->write($filename);
 
@@ -86,7 +86,7 @@ class MongoGridFSFileTest extends TestCase
         $data = str_repeat('a', 500 * 1024);
         $id = $this->prepareFile($data);
         $file = $this->getGridFS()->findOne(['_id' => $id]);
-        $this->assertInstanceOf(\MongoGridFSFile::class, $file);
+        $this->assertInstanceOf('\MongoGridFSFile', $file);
 
         $result = $file->getResource();
 

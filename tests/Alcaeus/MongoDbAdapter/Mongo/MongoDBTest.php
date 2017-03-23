@@ -317,9 +317,9 @@ class MongoDBTest extends TestCase
 
             $collectionNames = $this->getDatabase()->getCollectionNames();
             $this->assertNotContains('system.profile', $collectionNames);
-        } finally {
-            $this->getDatabase()->setProfilingLevel(\MongoDB::PROFILING_OFF);
-        }
+        } catch (\Exception $e) {}
+
+        $this->getDatabase()->setProfilingLevel(\MongoDB::PROFILING_OFF);
     }
 
     public function testGetCollectionNamesWithSystemCollections()
@@ -333,9 +333,9 @@ class MongoDBTest extends TestCase
 
             $collectionNames = $this->getDatabase()->getCollectionNames(['includeSystemCollections' => true]);
             $this->assertContains('system.profile', $collectionNames);
-        } finally {
-            $this->getDatabase()->setProfilingLevel(\MongoDB::PROFILING_OFF);
-        }
+        } catch (\Exception $e) {}
+
+        $this->getDatabase()->setProfilingLevel(\MongoDB::PROFILING_OFF);
     }
 
     public function testListCollectionsExecutionTimeoutException()

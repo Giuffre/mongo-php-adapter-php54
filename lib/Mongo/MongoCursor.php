@@ -452,12 +452,15 @@ class MongoCursor extends AbstractCursor implements Iterator
      */
     protected function wrapTraversable(\Traversable $traversable)
     {
+        $iterator = new ArrayIterator();
         foreach ($traversable as $key => $value) {
             if (isset($value->_id) && ($value->_id instanceof \MongoDB\BSON\ObjectID || !is_object($value->_id))) {
                 $key = (string) $value->_id;
             }
-            yield $key => $value;
+            $iterator->offsetSet($key, $value);
         }
+
+        return $iterator;
     }
 
     /**

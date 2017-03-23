@@ -507,7 +507,7 @@ class MongoCollectionTest extends TestCase
 
     public function testFindWithProjectionAndSequentialNumericKeys()
     {
-        $this->setExpectedException(\MongoException::class, 'field names must be strings', 8);
+        $this->setExpectedException('MongoException', 'field names must be strings', 8);
         $this->getCollection()->findOne([], [true, false]);
     }
 

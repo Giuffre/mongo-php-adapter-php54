@@ -477,7 +477,7 @@ class MongoCollection
     public function distinct($key, array $query = [])
     {
         try {
-            return array_map([TypeConverter::class, 'toLegacy'], $this->collection->distinct($key, TypeConverter::fromLegacy($query)));
+            return array_map(['\Alcaeus\MongoDbAdapter\TypeConverter', 'toLegacy'], $this->collection->distinct($key, TypeConverter::fromLegacy($query)));
         } catch (\MongoDB\Driver\Exception\Exception $e) {
             return false;
         }

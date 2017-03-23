@@ -34,15 +34,15 @@ class ExceptionConverter
         $code = $e->getCode();
 
         switch (get_class($e)) {
-            case Exception\AuthenticationException::class:
-            case Exception\ConnectionException::class:
-            case Exception\ConnectionTimeoutException::class:
-            case Exception\SSLConnectionException::class:
+            case 'MongoDB\Driver\Exception\AuthenticationException':
+            case 'MongoDB\Driver\Exception\ConnectionException':
+            case 'MongoDB\Driver\Exception\ConnectionTimeoutException':
+            case 'MongoDB\Driver\Exception\SSLConnectionException':
                 $class = 'MongoConnectionException';
                 break;
 
-            case Exception\BulkWriteException::class:
-            case Exception\WriteException::class:
+            case 'MongoDB\Driver\Exception\BulkWriteException':
+            case 'MongoDB\Driver\Exception\WriteException':
                 $writeResult = $e->getWriteResult();
 
                 if ($writeResult) {
@@ -64,7 +64,7 @@ class ExceptionConverter
                 }
                 break;
 
-            case Exception\ExecutionTimeoutException::class:
+            case 'MongoDB\Driver\Exception\ExecutionTimeoutException':
                 $class = 'MongoExecutionTimeoutException';
                 break;
 

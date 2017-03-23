@@ -36,7 +36,7 @@ class MongoRegexTest extends TestCase
 
     public function testCreateWithBsonType()
     {
-        $this->skipTestUnless(in_array(TypeInterface::class, class_implements('MongoRegex')));
+        $this->skipTestUnless(in_array('\Alcaeus\MongoDbAdapter\TypeInterface', class_implements('MongoRegex')));
 
         $bsonRegex = new \MongoDB\BSON\Regex('abc', 'i');
         $regex = new \MongoRegex($bsonRegex);

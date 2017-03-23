@@ -37,7 +37,7 @@ class MongoBinDataTest extends TestCase
 
     public function testCreateWithBsonBinary()
     {
-        $this->skipTestUnless(in_array(TypeInterface::class, class_implements('MongoBinData')));
+        $this->skipTestUnless(in_array('\Alcaeus\MongoDbAdapter\TypeInterface', class_implements('MongoBinData')));
 
         $bsonBinary = new \MongoDB\BSON\Binary('foo', \MongoDB\BSON\Binary::TYPE_UUID);
         $bin = new \MongoBinData($bsonBinary);

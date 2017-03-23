@@ -34,7 +34,7 @@ class MongoCodeTest extends TestCase
 
     public function testCreateWithBsonObject()
     {
-        $this->skipTestUnless(in_array(TypeInterface::class, class_implements('MongoCode')));
+        $this->skipTestUnless(in_array('\Alcaeus\MongoDbAdapter\TypeInterface', class_implements('MongoCode')));
 
         $bsonCode = new \MongoDB\BSON\Javascript('code', ['scope' => 'bleh']);
         $code = new \MongoCode($bsonCode);

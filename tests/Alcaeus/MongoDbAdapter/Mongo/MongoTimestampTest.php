@@ -44,7 +44,7 @@ class MongoTimestampTest extends TestCase
 
     public function testCreateWithBsonTimestamp()
     {
-        $this->skipTestUnless(in_array(TypeInterface::class, class_implements('MongoTimestamp')));
+        $this->skipTestUnless(in_array('\Alcaeus\MongoDbAdapter\TypeInterface', class_implements('MongoTimestamp')));
 
         $bsonTimestamp = new \MongoDB\BSON\Timestamp(987654321, 1234567890);
         $timestamp = new \MongoTimestamp($bsonTimestamp);
@@ -55,7 +55,7 @@ class MongoTimestampTest extends TestCase
 
     public function testContructorArgumentOrderDiffers()
     {
-        $this->skipTestUnless(in_array(TypeInterface::class, class_implements('MongoTimestamp')));
+        $this->skipTestUnless(in_array('\Alcaeus\MongoDbAdapter\TypeInterface', class_implements('MongoTimestamp')));
 
         /* The legacy MongoTimestamp's constructor takes seconds before the
          * increment, while MongoDB\BSON\Timestamp takes the increment first.

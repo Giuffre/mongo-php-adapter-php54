@@ -306,9 +306,12 @@ abstract class AbstractCursor
      */
     protected function wrapTraversable(\Traversable $traversable)
     {
+        $iterator = new \ArrayIterator();
         foreach ($traversable as $key => $value) {
-            yield $key => $value;
+            $iterator->offsetSet($key, $value);
         }
+
+        return $iterator;
     }
 
     /**

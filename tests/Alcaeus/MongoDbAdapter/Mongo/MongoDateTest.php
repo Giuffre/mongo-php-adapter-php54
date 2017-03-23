@@ -73,7 +73,7 @@ class MongoDateTest extends TestCase
 
     public function testCreateWithBsonDate()
     {
-        $this->skipTestUnless(in_array(TypeInterface::class, class_implements('MongoDate')));
+        $this->skipTestUnless(in_array('\Alcaeus\MongoDbAdapter\TypeInterface', class_implements('MongoDate')));
 
         $bsonDate = new \MongoDB\BSON\UTCDateTime(1234567890123);
         $date = new \MongoDate($bsonDate);
